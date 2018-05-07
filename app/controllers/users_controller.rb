@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   # GET /users/:id
   def show
     @user = User.find(params[:id])
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save  # => Validation
       # Success
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
       # GET "users/#{@user.id}" => show 
